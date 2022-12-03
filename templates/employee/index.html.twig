@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}employees{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+   <h2>Employees Details</h2>
+   <table class="table mt-3">
+      <thead>
+      <tr>
+         <th scope="col">#</th>
+         <th scope="col">Name</th>
+         <th scope="col">salary</th>
+         <th scope="col">Destation</th>
+         <th scope="col">Delete</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      {% if employeesis defined %}
+         {% for employee in employees %}
+         <tr>
+            <th scope="row">{{ employee.id }}</th>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.destation }}</td>
+            <td><a href="{{ path('delete_employee',{id: employee.id}) }}" class="text-danger">Delete</a></td>
+         </tr>
+         {% endfor %}
+      {% endif %}
+      </tbody>
+   </table>
+   <a class="btn btn-primary" href="{{ path('create_employee')}}" role="button">Add a employee</a>
+</div>
+{% endblock %}
