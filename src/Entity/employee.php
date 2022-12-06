@@ -23,6 +23,9 @@ class employeescontroller
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $destation = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class employeescontroller
     public function setDestation(?string $destation): self
     {
         $this->destation = $destation;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
